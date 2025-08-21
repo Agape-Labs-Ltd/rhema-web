@@ -5,8 +5,8 @@ import { Heart, BookOpen, Target, Star, Download, Smartphone } from "lucide-reac
 import heroImage from "@/assets/rhema-hero.jpg";
 import appScreenshot from "@/assets/rhema-app-screenshot.png";
 import rhemaLogo from "@/assets/rhema-logo.png";
-import React, { useRef, useState, useEffect } from "react";
-import { useScroll, useTransform, motion, MotionValue, AnimatePresence } from "framer-motion";
+import React, { useRef } from "react";
+import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 
 // Scroll Animation Components
 const ContainerScroll = ({
@@ -108,35 +108,6 @@ const AnimatedCard = ({
   );
 };
 
-// Animated Word Component
-const AnimatedWord = () => {
-  const [currentWord, setCurrentWord] = useState("word");
-  const words = ["word", "ῥῆμα"];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWord(prev => prev === "word" ? "ῥῆμα" : "word");
-    }, 3000); // Change every 3 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <AnimatePresence mode="wait">
-      <motion.span
-        key={currentWord}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.3 }}
-        className="inline-block"
-      >
-        {currentWord}
-      </motion.span>
-    </AnimatePresence>
-  );
-};
-
 const RhemaLanding = () => {
   return (
     <div className="min-h-screen bg-gradient-peaceful">
@@ -154,18 +125,14 @@ const RhemaLanding = () => {
         <ContainerScroll
           titleComponent={
             <>
-              <h1 className="text-2xl md:text-3xl font-medium text-teal-text dark:text-white mb-4 leading-tight max-w-4xl mx-auto">
-                "Man shall not live on bread alone, but on every{" "}
-                <span className="text-primary font-bold text-3xl md:text-4xl">
-                  <AnimatedWord />
-                </span>{" "}
-                that comes from the mouth of God"
+              <h1 className="text-4xl font-semibold text-teal-text dark:text-white mb-4">
+                Hide God's Word <br />
+                <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none bg-gradient-spiritual bg-clip-text text-transparent">
+                  in Your Heart
+                </span>
               </h1>
-              <p className="text-base text-muted-foreground mb-2 font-medium">
-                Matthew 4:4
-              </p>
               <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                Discover the power of God's Word through beautiful, 
+                Rhema helps you memorize and meditate upon Scripture with beautiful, 
                 engaging tools designed for deep spiritual growth.
               </p>
             </>
