@@ -1,61 +1,158 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card as UICard } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart, BookOpen, Target, Star, Download, Smartphone } from "lucide-react";
 import heroImage from "@/assets/rhema-hero.jpg";
 import appMockup from "@/assets/app-mockup.jpg";
+import React, { useRef } from "react";
+import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
+
+// Scroll Animation Components
+const ContainerScroll = ({
+  titleComponent,
+  children,
+}: {
+  titleComponent: string | React.ReactNode;
+  children: React.ReactNode;
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+  });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
+  const scaleDimensions = () => {
+    return isMobile ? [0.7, 0.9] : [1.05, 1];
+  };
+
+  const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
+  const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
+
+  return (
+    <div
+      className="h-[60rem] md:h-[80rem] flex items-center justify-center relative p-2 md:p-20"
+      ref={containerRef}
+    >
+      <div
+        className="py-10 md:py-40 w-full relative"
+        style={{
+          perspective: "1000px",
+        }}
+      >
+        <Header translate={translate} titleComponent={titleComponent} />
+        <AnimatedCard rotate={rotate} translate={translate} scale={scale}>
+          {children}
+        </AnimatedCard>
+      </div>
+    </div>
+  );
+};
+
+const Header = ({
+  translate,
+  titleComponent,
+}: {
+  translate: MotionValue<number>;
+  titleComponent: string | React.ReactNode;
+}) => {
+  return (
+    <motion.div
+      style={{
+        translateY: translate,
+      }}
+      className="div max-w-5xl mx-auto text-center"
+    >
+      {titleComponent}
+    </motion.div>
+  );
+};
+
+const AnimatedCard = ({
+  rotate,
+  scale,
+  translate,
+  children,
+}: {
+  rotate: MotionValue<number>;
+  scale: MotionValue<number>;
+  translate: MotionValue<number>;
+  children: React.ReactNode;
+}) => {
+  return (
+    <motion.div
+      style={{
+        rotateX: rotate,
+        scale,
+        boxShadow:
+          "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
+      }}
+      className="max-w-sm -mt-12 mx-auto h-[35rem] md:h-[45rem] w-[18rem] md:w-[22rem] border-4 border-[#1C1C1E] p-1 md:p-2 bg-[#000000] rounded-[3rem] shadow-2xl"
+    >
+      <div className="h-full w-full overflow-hidden rounded-[2.5rem] bg-gray-100 dark:bg-zinc-900 md:p-2">
+        {children}
+      </div>
+    </motion.div>
+  );
+};
 
 const RhemaLanding = () => {
   return (
     <div className="min-h-screen bg-gradient-peaceful">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-divine">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 via-spiritual-light/20 to-spiritual-gold/10" />
+      {/* Hero Section with Scroll Animation */}
+      <section className="flex flex-col overflow-hidden">
+        <ContainerScroll
+          titleComponent={
+            <>
+              <h1 className="text-4xl font-semibold text-spiritual-text dark:text-white mb-4">
+                Hide God's Word <br />
+                <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none bg-gradient-spiritual bg-clip-text text-transparent">
+                  in Your Heart
+                </span>
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                Rhema helps you memorize and meditate upon Scripture with beautiful, 
+                engaging tools designed for deep spiritual growth.
+              </p>
+            </>
+          }
+        >
+          <img
+            src={appMockup}
+            alt="Rhema app interface"
+            className="mx-auto rounded-2xl object-cover h-full object-left-top"
+            draggable={false}
+          />
+        </ContainerScroll>
         
-        <div className="relative container mx-auto px-4 py-20 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 animate-fade-in">
-              <Badge variant="secondary" className="w-fit text-brand-primary border-brand-primary/20">
-                ✨ Scripture Memorization Made Beautiful
-              </Badge>
-              
-              <div className="space-y-6">
-                <h1 className="text-5xl lg:text-7xl font-bold text-spiritual-text leading-tight">
-                  Hide God's Word
-                  <span className="bg-gradient-spiritual bg-clip-text text-transparent animate-spiritual-glow">
-                    {" "}in Your Heart
-                  </span>
-                </h1>
-                
-                <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
-                  Rhema helps you memorize and meditate upon Scripture with beautiful, 
-                  engaging tools designed for deep spiritual growth.
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button size="lg" className="text-lg px-8 py-6 shadow-divine hover:shadow-glow transition-all duration-500 group">
-                  <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-                  Download for iOS
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-500">
-                  <Smartphone className="w-5 h-5 mr-2" />
-                  Get on Android
-                </Button>
-              </div>
+        {/* Download Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center -mt-64 mb-32 relative z-10">
+          <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 shadow-divine hover:shadow-glow transition-all duration-500 group">
+            <Download className="w-5 h-5 group-hover:animate-bounce" />
+            <div className="flex flex-col text-left">
+              <span className="text-xs opacity-80">Download on the</span>
+              <span className="text-lg font-semibold">App Store</span>
             </div>
-
-            <div className="relative animate-slide-up">
-              <div className="relative group">
-                <img 
-                  src={heroImage} 
-                  alt="Bible with divine light" 
-                  className="w-full h-auto rounded-2xl shadow-divine group-hover:shadow-glow transition-all duration-700 animate-float"
-                />
-                <div className="absolute inset-0 bg-gradient-spiritual opacity-20 rounded-2xl" />
-              </div>
+          </Button>
+          
+          <Button variant="outline" size="lg" className="flex items-center gap-3 text-lg px-8 py-6 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-500">
+            <Smartphone className="w-5 h-5" />
+            <div className="flex flex-col text-left">
+              <span className="text-xs opacity-80">Get it on</span>
+              <span className="text-lg font-semibold">Google Play</span>
             </div>
-          </div>
+          </Button>
         </div>
       </section>
 
@@ -73,7 +170,7 @@ const RhemaLanding = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-8 text-center shadow-peaceful hover:shadow-divine transition-all duration-500 group animate-scale-in hover:-translate-y-2">
+            <UICard className="p-8 text-center shadow-peaceful hover:shadow-divine transition-all duration-500 group animate-scale-in hover:-translate-y-2">
               <div className="w-16 h-16 bg-gradient-spiritual rounded-full flex items-center justify-center mx-auto mb-6 group-hover:animate-spiritual-glow">
                 <BookOpen className="w-8 h-8 text-white" />
               </div>
@@ -82,9 +179,9 @@ const RhemaLanding = () => {
                 Progressive learning system that helps you memorize verses naturally 
                 through spaced repetition and interactive exercises.
               </p>
-            </Card>
+            </UICard>
 
-            <Card className="p-8 text-center shadow-peaceful hover:shadow-divine transition-all duration-500 group animate-scale-in hover:-translate-y-2" style={{animationDelay: '0.2s'}}>
+            <UICard className="p-8 text-center shadow-peaceful hover:shadow-divine transition-all duration-500 group animate-scale-in hover:-translate-y-2" style={{animationDelay: '0.2s'}}>
               <div className="w-16 h-16 bg-gradient-spiritual rounded-full flex items-center justify-center mx-auto mb-6 group-hover:animate-spiritual-glow">
                 <Heart className="w-8 h-8 text-white" />
               </div>
@@ -93,9 +190,9 @@ const RhemaLanding = () => {
                 Peaceful meditation sessions with Scripture that help you reflect 
                 deeply on God's Word and find spiritual renewal.
               </p>
-            </Card>
+            </UICard>
 
-            <Card className="p-8 text-center shadow-peaceful hover:shadow-divine transition-all duration-500 group animate-scale-in hover:-translate-y-2" style={{animationDelay: '0.4s'}}>
+            <UICard className="p-8 text-center shadow-peaceful hover:shadow-divine transition-all duration-500 group animate-scale-in hover:-translate-y-2" style={{animationDelay: '0.4s'}}>
               <div className="w-16 h-16 bg-gradient-spiritual rounded-full flex items-center justify-center mx-auto mb-6 group-hover:animate-spiritual-glow">
                 <Target className="w-8 h-8 text-white" />
               </div>
@@ -104,7 +201,7 @@ const RhemaLanding = () => {
                 Set personalized goals and track your progress as you build 
                 a consistent habit of engaging with God's Word daily.
               </p>
-            </Card>
+            </UICard>
           </div>
         </div>
       </section>
