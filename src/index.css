@@ -38,20 +38,22 @@ All colors MUST be HSL.
 
     /* Rhema Brand Colors */
     --brand-primary: 187 57% 48%;
+    --brand-secondary: 187 47% 38%;
     --brand-surface: 0 0% 100%;
-    --spiritual-gold: 45 95% 68%;
-    --divine-light: 187 80% 95%;
+    --teal-light: 187 80% 95%;
+    --teal-accent: 187 67% 58%;
+    --teal-dark: 187 37% 28%;
     --sacred-text: 215 25% 27%;
 
     /* Gradients */
-    --gradient-divine: linear-gradient(135deg, hsl(var(--divine-light)), hsl(var(--brand-surface)));
-    --gradient-spiritual: linear-gradient(45deg, hsl(var(--brand-primary)), hsl(var(--spiritual-gold)));
-    --gradient-peaceful: linear-gradient(180deg, hsl(var(--brand-surface)), hsl(var(--divine-light)));
+    --gradient-divine: linear-gradient(135deg, hsl(var(--teal-light)), hsl(var(--brand-surface)));
+    --gradient-spiritual: linear-gradient(45deg, hsl(var(--brand-primary)), hsl(var(--teal-accent)));
+    --gradient-peaceful: linear-gradient(180deg, hsl(var(--brand-surface)), hsl(var(--teal-light)));
 
     /* Shadows */
     --shadow-peaceful: 0 10px 40px -10px hsl(var(--brand-primary) / 0.2);
     --shadow-divine: 0 20px 60px -15px hsl(var(--brand-primary) / 0.3);
-    --shadow-glow: 0 0 30px hsl(var(--spiritual-gold) / 0.4);
+    --shadow-glow: 0 0 30px hsl(var(--teal-accent) / 0.4);
 
     /* Animations */
     --transition-spiritual: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);

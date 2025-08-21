@@ -3,7 +3,8 @@ import { Card as UICard } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart, BookOpen, Target, Star, Download, Smartphone } from "lucide-react";
 import heroImage from "@/assets/rhema-hero.jpg";
-import appMockup from "@/assets/app-mockup.jpg";
+import appScreenshot from "@/assets/rhema-app-screenshot.png";
+import rhemaLogo from "@/assets/rhema-logo.png";
 import React, { useRef } from "react";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 
@@ -110,12 +111,21 @@ const AnimatedCard = ({
 const RhemaLanding = () => {
   return (
     <div className="min-h-screen bg-gradient-peaceful">
+      {/* Logo */}
+      <div className="absolute top-6 left-6 z-50">
+        <img 
+          src={rhemaLogo} 
+          alt="Rhema Logo" 
+          className="h-12 w-auto"
+        />
+      </div>
+
       {/* Hero Section with Scroll Animation */}
       <section className="flex flex-col overflow-hidden">
         <ContainerScroll
           titleComponent={
             <>
-              <h1 className="text-4xl font-semibold text-spiritual-text dark:text-white mb-4">
+              <h1 className="text-4xl font-semibold text-teal-text dark:text-white mb-4">
                 Hide God's Word <br />
                 <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none bg-gradient-spiritual bg-clip-text text-transparent">
                   in Your Heart
@@ -129,7 +139,7 @@ const RhemaLanding = () => {
           }
         >
           <img
-            src={appMockup}
+            src={appScreenshot}
             alt="Rhema app interface"
             className="mx-auto rounded-2xl object-cover h-full object-left-top"
             draggable={false}
@@ -160,7 +170,7 @@ const RhemaLanding = () => {
       <section className="py-20 bg-brand-surface">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold text-spiritual-text mb-4">
+            <h2 className="text-4xl font-bold text-teal-text mb-4">
               Transform Your Scripture Study
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -171,10 +181,10 @@ const RhemaLanding = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             <UICard className="p-8 text-center shadow-peaceful hover:shadow-divine transition-all duration-500 group animate-scale-in hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-spiritual rounded-full flex items-center justify-center mx-auto mb-6 group-hover:animate-spiritual-glow">
+              <div className="w-16 h-16 bg-gradient-spiritual rounded-full flex items-center justify-center mx-auto mb-6 group-hover:animate-teal-glow">
                 <BookOpen className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-semibold text-spiritual-text mb-4">Scripture Memory</h3>
+              <h3 className="text-2xl font-semibold text-teal-text mb-4">Scripture Memory</h3>
               <p className="text-muted-foreground">
                 Progressive learning system that helps you memorize verses naturally 
                 through spaced repetition and interactive exercises.
@@ -182,10 +192,10 @@ const RhemaLanding = () => {
             </UICard>
 
             <UICard className="p-8 text-center shadow-peaceful hover:shadow-divine transition-all duration-500 group animate-scale-in hover:-translate-y-2" style={{animationDelay: '0.2s'}}>
-              <div className="w-16 h-16 bg-gradient-spiritual rounded-full flex items-center justify-center mx-auto mb-6 group-hover:animate-spiritual-glow">
+              <div className="w-16 h-16 bg-gradient-spiritual rounded-full flex items-center justify-center mx-auto mb-6 group-hover:animate-teal-glow">
                 <Heart className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-semibold text-spiritual-text mb-4">Guided Meditation</h3>
+              <h3 className="text-2xl font-semibold text-teal-text mb-4">Guided Meditation</h3>
               <p className="text-muted-foreground">
                 Peaceful meditation sessions with Scripture that help you reflect 
                 deeply on God's Word and find spiritual renewal.
@@ -193,10 +203,10 @@ const RhemaLanding = () => {
             </UICard>
 
             <UICard className="p-8 text-center shadow-peaceful hover:shadow-divine transition-all duration-500 group animate-scale-in hover:-translate-y-2" style={{animationDelay: '0.4s'}}>
-              <div className="w-16 h-16 bg-gradient-spiritual rounded-full flex items-center justify-center mx-auto mb-6 group-hover:animate-spiritual-glow">
+              <div className="w-16 h-16 bg-gradient-spiritual rounded-full flex items-center justify-center mx-auto mb-6 group-hover:animate-teal-glow">
                 <Target className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-semibold text-spiritual-text mb-4">Daily Goals</h3>
+              <h3 className="text-2xl font-semibold text-teal-text mb-4">Daily Goals</h3>
               <p className="text-muted-foreground">
                 Set personalized goals and track your progress as you build 
                 a consistent habit of engaging with God's Word daily.
@@ -211,38 +221,38 @@ const RhemaLanding = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in">
-              <h2 className="text-4xl lg:text-5xl font-bold text-spiritual-text">
+              <h2 className="text-4xl lg:text-5xl font-bold text-teal-text">
                 Beautiful Design
                 <span className="block text-brand-primary">Spiritual Purpose</span>
               </h2>
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-spiritual-gold rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-8 h-8 bg-teal-accent rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <Star className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-spiritual-text mb-2">Distraction-Free Experience</h4>
+                    <h4 className="font-semibold text-teal-text mb-2">Distraction-Free Experience</h4>
                     <p className="text-muted-foreground">Clean, peaceful interface designed to help you focus on what matters most.</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-spiritual-gold rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-8 h-8 bg-teal-accent rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <Star className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-spiritual-text mb-2">Progress Tracking</h4>
+                    <h4 className="font-semibold text-teal-text mb-2">Progress Tracking</h4>
                     <p className="text-muted-foreground">See your spiritual growth with meaningful metrics and milestones.</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-spiritual-gold rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-8 h-8 bg-teal-accent rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <Star className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-spiritual-text mb-2">Offline Access</h4>
+                    <h4 className="font-semibold text-teal-text mb-2">Offline Access</h4>
                     <p className="text-muted-foreground">Take God's Word with you anywhere, no internet connection required.</p>
                   </div>
                 </div>
@@ -251,7 +261,7 @@ const RhemaLanding = () => {
 
             <div className="relative animate-slide-up">
               <img 
-                src={appMockup} 
+                src={appScreenshot} 
                 alt="Rhema app interface" 
                 className="w-full max-w-md mx-auto h-auto drop-shadow-2xl animate-float"
               />
@@ -263,7 +273,7 @@ const RhemaLanding = () => {
       {/* Final CTA Section */}
       <section className="py-20 bg-brand-surface text-center">
         <div className="container mx-auto px-4 max-w-4xl animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-spiritual-text mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-teal-text mb-6">
             Start Your Journey Today
           </h2>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">

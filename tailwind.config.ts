@@ -59,9 +59,10 @@ export default {
 					primary: 'hsl(var(--brand-primary))',
 					surface: 'hsl(var(--brand-surface))'
 				},
-				spiritual: {
-					gold: 'hsl(var(--spiritual-gold))',
-					light: 'hsl(var(--divine-light))',
+				teal: {
+					light: 'hsl(var(--teal-light))',
+					accent: 'hsl(var(--teal-accent))',
+					dark: 'hsl(var(--teal-dark))',
 					text: 'hsl(var(--sacred-text))'
 				},
 				sidebar: {
@@ -101,9 +102,9 @@ export default {
 					'0%': { transform: 'translateY(100px)', opacity: '0' },
 					'100%': { transform: 'translateY(0)', opacity: '1' }
 				},
-				'spiritual-glow': {
-					'0%, 100%': { filter: 'drop-shadow(0 0 10px hsl(var(--spiritual-gold) / 0.3))' },
-					'50%': { filter: 'drop-shadow(0 0 20px hsl(var(--spiritual-gold) / 0.6))' }
+				'teal-glow': {
+					'0%, 100%': { filter: 'drop-shadow(0 0 10px hsl(var(--teal-accent) / 0.3))' },
+					'50%': { filter: 'drop-shadow(0 0 20px hsl(var(--teal-accent) / 0.6))' }
 				},
 				'float': {
 					'0%, 100%': { transform: 'translateY(0px)' },
@@ -116,7 +117,7 @@ export default {
 				'fade-in': 'fade-in 0.6s ease-out',
 				'scale-in': 'scale-in 0.5s ease-out',
 				'slide-up': 'slide-up 0.8s ease-out',
-				'spiritual-glow': 'spiritual-glow 3s ease-in-out infinite',
+				'teal-glow': 'teal-glow 3s ease-in-out infinite',
 				'float': 'float 4s ease-in-out infinite'
 			},
 			backgroundImage: {
