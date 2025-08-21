@@ -154,14 +154,14 @@ const RhemaLanding = () => {
         <ContainerScroll
           titleComponent={
             <>
-              <h1 className="text-3xl md:text-4xl font-semibold text-teal-text dark:text-white mb-6 leading-relaxed">
+              <h1 className="text-2xl md:text-3xl font-medium text-teal-text dark:text-white mb-4 leading-tight max-w-4xl mx-auto">
                 "Man shall not live on bread alone, but on every{" "}
-                <span className="text-teal-primary font-bold">
+                <span className="text-primary font-bold text-3xl md:text-4xl">
                   <AnimatedWord />
                 </span>{" "}
                 that comes from the mouth of God"
               </h1>
-              <p className="text-lg text-muted-foreground mb-2">
+              <p className="text-base text-muted-foreground mb-2 font-medium">
                 Matthew 4:4
               </p>
               <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
