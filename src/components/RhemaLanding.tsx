@@ -125,9 +125,9 @@ const RhemaLanding = () => {
         <ContainerScroll
           titleComponent={
             <>
-              <h1 className="text-4xl font-semibold text-teal-text dark:text-white mb-4">
+              <h1 className="text-4xl font-semibold text-teal-text dark:text-white mb-4 font-fraunces">
                 Hide God's Word <br />
-                <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none bg-gradient-spiritual bg-clip-text text-transparent">
+                <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none bg-gradient-spiritual bg-clip-text text-transparent font-fraunces">
                   in Your Heart
                 </span>
               </h1>
@@ -170,7 +170,7 @@ const RhemaLanding = () => {
       <section className="py-20 bg-brand-surface">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold text-teal-text mb-4">
+            <h2 className="text-4xl font-bold text-teal-text mb-4 font-fraunces">
               Transform Your Scripture Study
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -221,7 +221,7 @@ const RhemaLanding = () => {
       {/* Final CTA Section */}
       <section className="py-20 bg-brand-surface text-center">
         <div className="container mx-auto px-4 max-w-4xl animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-teal-text mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-teal-text mb-6 font-fraunces">
             Start Your Journey Today
           </h2>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
