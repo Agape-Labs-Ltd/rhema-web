@@ -127,7 +127,7 @@ const RhemaLanding = () => {
             <>
               <h1 className="text-4xl font-semibold text-teal-text dark:text-white mb-6 font-serif">
                 Hide God's Word <br />
-                <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none bg-gradient-spiritual bg-clip-text text-transparent font-serif">
+                <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none bg-gradient-spiritual bg-clip-text text-transparent font-serif tracking-tight">
                   in Your Heart
                 </span>
               </h1>
@@ -147,11 +147,13 @@ const RhemaLanding = () => {
         </ContainerScroll>
         
         {/* Download Button - iOS only */}
-        <div className="flex justify-center items-center mt-8 mb-32 relative z-10">
-          <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full bg-black text-white hover:bg-black/90 border border-white/20">
+        <div className="flex justify-center items-center mt-4 mb-32 relative z-10">
+          <a href="https://testflight.apple.com/join/8rKnsebm" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full bg-black text-white hover:bg-black/90 border border-white/20">
             <img src="/apple_logo.svg" alt="Apple" className="w-5 h-5 invert" />
-            <span className="font-medium">Download for iOS</span>
-          </Button>
+              <span className="font-medium">Download for iOS</span>
+            </Button>
+          </a>
         </div>
       </section>
 
@@ -218,15 +220,13 @@ const RhemaLanding = () => {
             through meaningful Scripture memorization and meditation.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-10 py-6 shadow-divine hover:shadow-glow transition-all duration-500 group">
-              <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-              Download for iPhone
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-10 py-6 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-500">
-              <Smartphone className="w-5 h-5 mr-2" />
-              Download for Android
-            </Button>
+          <div className="flex justify-center">
+            <a href="https://testflight.apple.com/join/8rKnsebm" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full bg-black text-white hover:bg-black/90 border border-white/20">
+                <img src="/apple_logo.svg" alt="Apple" className="w-5 h-5 invert" />
+                <span className="font-medium">Download for iOS</span>
+              </Button>
+            </a>
           </div>
           
           <div className="mt-12 text-center">
