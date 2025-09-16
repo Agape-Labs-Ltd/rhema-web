@@ -216,59 +216,7 @@ const RhemaLanding = () => {
         </div>
       </section>
 
-      {/* Why Rhema? Section */}
-      <section className="py-20 bg-gradient-divine overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl lg:text-5xl font-bold text-teal-text mb-4">
-              Why Rhema?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Hear from the creator behind Rhema and discover the heart behind this spiritual journey.
-            </p>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {/* Speech Bubble */}
-              <div className="bg-white rounded-3xl p-8 md:p-12 shadow-divine relative animate-fade-in">
-                {/* Speech bubble tail */}
-                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[20px] border-t-white"></div>
-                
-                <div className="text-center space-y-6">
-                  <div className="text-6xl text-brand-primary mb-4">"</div>
-                  <blockquote className="text-xl md:text-2xl text-gray-800 leading-relaxed font-medium">
-                    Rhema was born from my own struggle to consistently engage with Scripture in our busy, digital world. 
-                    I wanted to create something that would make God's Word not just accessible, but truly transformative. 
-                    Every feature is designed to help you hide His Word in your heart, one verse at a time.
-                  </blockquote>
-                  <div className="text-6xl text-brand-primary mt-4">"</div>
-                </div>
-              </div>
-              
-              {/* Creator Avatar */}
-              <div className="flex justify-center mt-8">
-                <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-spiritual rounded-full flex items-center justify-center shadow-divine">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                      <span className="text-2xl font-bold text-brand-primary">J</span>
-                    </div>
-                  </div>
-                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-teal-accent rounded-full flex items-center justify-center">
-                    <Heart className="w-4 h-4 text-white" />
-                  </div>
-                </div>
-              </div>
-              
-              {/* Creator Info */}
-              <div className="text-center mt-6 animate-fade-in">
-                <h4 className="text-xl font-semibold text-teal-text">Joshua Okusi</h4>
-                <p className="text-muted-foreground">Creator of Rhema</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Final CTA Section */}
       <section className="py-20 bg-brand-surface text-center">
