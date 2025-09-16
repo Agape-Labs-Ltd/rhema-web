@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card as UICard } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Heart, BookOpen, Target, Star, Download, Smartphone } from "lucide-react";
+import { Heart, BookOpen, Target } from "lucide-react";
 import heroImage from "@/assets/rhema-hero.jpg";
 import appScreenshot from "@/assets/rhema-app-screenshot.png";
 import rhemaLogo from "@/assets/rhema_logo_light.svg";
+import appleLogo from "@/assets/apple_logo.svg";
 import React, { useRef } from "react";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 
@@ -125,9 +126,9 @@ const RhemaLanding = () => {
         <ContainerScroll
           titleComponent={
             <>
-              <h1 className="text-4xl font-semibold text-teal-text dark:text-white mb-4 font-fraunces">
+              <h1 className="text-4xl font-semibold text-teal-text dark:text-white mb-6 font-serif">
                 Hide God's Word <br />
-                <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none bg-gradient-spiritual bg-clip-text text-transparent font-fraunces">
+                <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none bg-gradient-spiritual bg-clip-text text-transparent font-serif">
                   in Your Heart
                 </span>
               </h1>
@@ -146,22 +147,11 @@ const RhemaLanding = () => {
           />
         </ContainerScroll>
         
-        {/* Download Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center -mt-64 mb-32 relative z-10">
-          <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 shadow-divine hover:shadow-glow transition-all duration-500 group">
-            <Download className="w-5 h-5 group-hover:animate-bounce" />
-            <div className="flex flex-col text-left">
-              <span className="text-xs opacity-80">Download on the</span>
-              <span className="text-lg font-semibold">App Store</span>
-            </div>
-          </Button>
-          
-          <Button variant="outline" size="lg" className="flex items-center gap-3 text-lg px-8 py-6 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-500">
-            <Smartphone className="w-5 h-5" />
-            <div className="flex flex-col text-left">
-              <span className="text-xs opacity-80">Get it on</span>
-              <span className="text-lg font-semibold">Google Play</span>
-            </div>
+        {/* Download Button - iOS only */}
+        <div className="flex justify-center items-center mt-8 mb-32 relative z-10">
+          <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full bg-black text-white hover:bg-black/90 border border-white/20">
+            <img src={appleLogo} alt="Apple" className="w-5 h-5 invert" />
+            <span className="font-medium">Download for iOS</span>
           </Button>
         </div>
       </section>
@@ -170,7 +160,7 @@ const RhemaLanding = () => {
       <section className="py-20 bg-brand-surface">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold text-teal-text mb-4 font-fraunces">
+            <h2 className="text-4xl font-bold text-teal-text mb-4 font-serif">
               Transform Your Scripture Study
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -221,7 +211,7 @@ const RhemaLanding = () => {
       {/* Final CTA Section */}
       <section className="py-20 bg-brand-surface text-center">
         <div className="container mx-auto px-4 max-w-4xl animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-teal-text mb-6 font-fraunces">
+          <h2 className="text-4xl lg:text-5xl font-bold text-teal-text mb-6 font-serif">
             Start Your Journey Today
           </h2>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">

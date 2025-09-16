@@ -20,7 +20,7 @@ export default {
 		extend: {
 			fontFamily: {
 				'sans': ['"Noto Sans"', 'system-ui', 'sans-serif'],
-				'fraunces': ['"Fraunces"', 'serif'],
+				'serif': ['"Noto Serif"', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
