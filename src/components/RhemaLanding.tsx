@@ -5,7 +5,6 @@ import { Heart, BookOpen, Target } from "lucide-react";
 import heroImage from "@/assets/rhema-hero.jpg";
 import appScreenshot from "@/assets/rhema-app-screenshot.png";
 import rhemaLogo from "@/assets/rhema_logo_light.svg";
-import appleLogo from "@/assets/apple_logo.svg";
 import React, { useRef } from "react";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 
@@ -150,7 +149,7 @@ const RhemaLanding = () => {
         {/* Download Button - iOS only */}
         <div className="flex justify-center items-center mt-8 mb-32 relative z-10">
           <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full bg-black text-white hover:bg-black/90 border border-white/20">
-            <img src={appleLogo} alt="Apple" className="w-5 h-5 invert" />
+            <img src="/apple_logo.svg" alt="Apple" className="w-5 h-5 invert" />
             <span className="font-medium">Download for iOS</span>
           </Button>
         </div>
