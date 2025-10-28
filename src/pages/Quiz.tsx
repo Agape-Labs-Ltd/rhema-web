@@ -5,6 +5,7 @@ import { ScoreScreen } from "@/components/quiz/ScoreScreen";
 import { LeaderboardModal } from "@/components/quiz/LeaderboardModal";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import questionsData from "@/questions.json";
 
 interface Question {
   text: string;
@@ -39,16 +40,7 @@ const Quiz = () => {
 
   // Load questions on mount
   useEffect(() => {
-    fetch("/questions.json")
-      .then((res) => res.json())
-      .then((data) => setAllQuestions(data))
-      .catch(() => {
-        toast({
-          title: "Error",
-          description: "Failed to load questions.",
-          variant: "destructive",
-        });
-      });
+    setAllQuestions(questionsData);
   }, []);
 
   // Load leaderboard
