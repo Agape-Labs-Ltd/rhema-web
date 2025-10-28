@@ -68,8 +68,11 @@ const Quiz = () => {
       entries.push({ name: randomName, score: randomScore });
     }
 
-    setLeaderboard(entries);
-    return entries;
+    // Sort by score descending
+    const sortedEntries = entries.sort((a, b) => b.score - a.score);
+
+    setLeaderboard(sortedEntries);
+    return sortedEntries;
   };
 
   useEffect(() => {
