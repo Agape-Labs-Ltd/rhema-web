@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 import { LeaderboardList } from "./LeaderboardList";
 import { EmailCaptureModal } from "./EmailCaptureModal";
 import { useState } from "react";
@@ -24,13 +25,13 @@ export const ScoreScreen = ({ score, leaderboard, onPlayAgain, onSaveScore }: Sc
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
       {/* Back Link */}
-      <a
-        href="https://testflight.apple.com/join/8rKnsebm"
+      <Link
+        to="/"
         className="absolute top-6 left-6 flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
       >
         <ArrowLeft className="w-5 h-5" />
         <span className="text-sm">Back to Home</span>
-      </a>
+      </Link>
 
       {/* Score Display */}
       <div className="text-center space-y-6 max-w-md mb-12">

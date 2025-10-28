@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Trophy } from "lucide-react";
+import { Link } from "react-router-dom";
 import rhemaLogo from "@/assets/rhema_logo_light.svg";
 
 interface StartScreenProps {
@@ -12,7 +13,9 @@ export const StartScreen = ({ onStart, onShowLeaderboard }: StartScreenProps) =>
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
       {/* Logo */}
       <div className="absolute top-6 left-6">
-        <img src={rhemaLogo} alt="Rhema Logo" className="h-8 w-auto" />
+        <Link to="/">
+          <img src={rhemaLogo} alt="Rhema Logo" className="h-8 w-auto cursor-pointer" />
+        </Link>
       </div>
 
       {/* Leaderboard Icon */}
