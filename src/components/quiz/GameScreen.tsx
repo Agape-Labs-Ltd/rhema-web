@@ -36,7 +36,7 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
           handleAnswer(-1); // timeout
           return 0;
         }
-        if (prev <= 3) {
+        if (prev === 3) {
           timerTickSound.play().catch(() => {});
         }
         return prev - 1;
