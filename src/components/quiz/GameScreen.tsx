@@ -29,21 +29,46 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
     setSelectedIndex(null);
     setShowFeedback(false);
 
+    let currentTime = 10;
+    let hasAnswered = false;
+
     const timer = setInterval(() => {
-      setTimeRemaining((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          handleAnswer(-1); // timeout
-          return 0;
-        }
-        if (prev === 3) {
-          timerTickSound.play().catch(() => {});
-        }
-        return prev - 1;
-      });
+      currentTime -= 1;
+      setTimeRemaining(currentTime);
+
+      // Play tick sound in final 3 seconds (including 0)
+      if (currentTime <= 3 && currentTime >= 0) {
+        timerTickSound.play().catch(() => {});
+      }
+
+      // Auto-advance when timer runs out
+      if (currentTime <= 0 && !hasAnswered) {
+        hasAnswered = true;
+        clearInterval(timer);
+        
+        // Wait for bar to fully empty (1000ms transition) before showing feedback
+        setTimeout(() => {
+          // Stop tick sound exactly when "Incorrect!" appears
+          timerTickSound.pause();
+          timerTickSound.currentTime = 0;
+          
+          setSelectedIndex(-1);
+          setShowFeedback(true);
+          incorrectSound.play().catch(() => {});
+          
+          setTimeout(() => {
+            onAnswer(-1, 0);
+          }, 1000);
+        }, 1000);
+      }
     }, 1000);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+      // Stop any playing tick sound when moving to next question
+      timerTickSound.pause();
+      timerTickSound.currentTime = 0;
+    };
   }, [question]);
 
   const handleAnswer = (index: number) => {
