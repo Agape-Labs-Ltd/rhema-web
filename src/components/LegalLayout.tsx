@@ -40,9 +40,6 @@ const LegalLayout = ({ children }: LegalLayoutProps) => {
               <Link to="/privacy" className="text-sm text-muted-foreground hover:text-teal-accent transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="text-sm text-muted-foreground hover:text-teal-accent transition-colors">
-                Terms & Conditions
-              </Link>
               <a
                 href="mailto:team@agapelabs.co.uk"
                 className="text-sm text-muted-foreground hover:text-teal-accent transition-colors"

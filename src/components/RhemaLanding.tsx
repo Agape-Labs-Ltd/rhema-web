@@ -251,11 +251,11 @@ const RhemaLanding = () => {
               © {new Date().getFullYear()} <a href="https://agapelabs.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-teal-accent transition-colors">Agape Labs Ltd</a>. All rights reserved.
             </div>
             <nav className="flex gap-6">
+              <Link to="/quiz" className="text-sm text-muted-foreground hover:text-teal-accent transition-colors">
+                Bible Quiz
+              </Link>
               <Link to="/privacy" className="text-sm text-muted-foreground hover:text-teal-accent transition-colors">
                 Privacy Policy
-              </Link>
-              <Link to="/terms" className="text-sm text-muted-foreground hover:text-teal-accent transition-colors">
-                Terms & Conditions
               </Link>
               <a
                 href="mailto:team@agapelabs.co.uk"
