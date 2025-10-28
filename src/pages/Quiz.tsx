@@ -64,7 +64,7 @@ const Quiz = () => {
     const entries = data || [];
     while (entries.length < 10) {
       const randomName = SEEDING_NAMES[Math.floor(Math.random() * SEEDING_NAMES.length)];
-      const randomScore = Math.floor(Math.random() * 1500) + 2500;
+      const randomScore = Math.floor(Math.random() * 600) + 600;
       entries.push({ name: randomName, score: randomScore });
     }
 
