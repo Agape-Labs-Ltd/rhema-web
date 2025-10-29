@@ -43,7 +43,27 @@ const Quiz = () => {
     setAllQuestions(questionsData);
   }, []);
 
-  // Load leaderboard
+  // Generate deterministic seed users for the current hour
+  const generateHourlySeedUsers = (hourSeed: number): Array<{ name: string; score: number }> => {
+    // Simple seeded random number generator
+    const seededRandom = (seed: number) => {
+      const x = Math.sin(seed++) * 10000;
+      return x - Math.floor(x);
+    };
+
+    const seedUsers: Array<{ name: string; score: number }> = [];
+    for (let i = 0; i < 10; i++) {
+      const nameIndex = Math.floor(seededRandom(hourSeed + i * 100) * SEEDING_NAMES.length);
+      const score = Math.floor(seededRandom(hourSeed + i * 100 + 50) * 600) + 600;
+      seedUsers.push({
+        name: SEEDING_NAMES[nameIndex],
+        score: score
+      });
+    }
+    return seedUsers;
+  };
+
+  // Load leaderboard with persistent hourly seeding
   const loadLeaderboard = async () => {
     const startOfHour = new Date();
     startOfHour.setMinutes(0, 0, 0);
@@ -52,24 +72,26 @@ const Quiz = () => {
       .from("leaderboard")
       .select("name, score")
       .gte("created_at", startOfHour.toISOString())
-      .order("score", { ascending: false })
-      .limit(10);
+      .order("score", { ascending: false });
 
     if (error) {
       console.error("Error loading leaderboard:", error);
       return [];
     }
 
-    // Pad with dummy users if needed
-    const entries = data || [];
-    while (entries.length < 10) {
-      const randomName = SEEDING_NAMES[Math.floor(Math.random() * SEEDING_NAMES.length)];
-      const randomScore = Math.floor(Math.random() * 600) + 600;
-      entries.push({ name: randomName, score: randomScore });
-    }
+    const realPlayers = data || [];
+    
+    // Generate deterministic seed users using current hour as seed
+    const hourSeed = startOfHour.getTime();
+    const seedUsers = generateHourlySeedUsers(hourSeed);
 
-    // Sort by score descending
-    const sortedEntries = entries.sort((a, b) => b.score - a.score);
+    // Combine real and seed users
+    const combined = [...realPlayers, ...seedUsers];
+
+    // Sort by score descending and take top 10
+    const sortedEntries = combined
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 10);
 
     setLeaderboard(sortedEntries);
     return sortedEntries;
