@@ -130,12 +130,12 @@ export const ScoreScreen = ({ score, leaderboard, onPlayAgain, onSaveScore }: Sc
         className="absolute top-6 left-6 flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
       >
         <ArrowLeft className="w-5 h-5" />
-        <span className="text-sm">Back to Home</span>
+        <span className="hidden sm:inline text-sm">Back to Home</span>
       </Link>
 
       {/* Score Display */}
       <div className="text-center space-y-6 max-w-md mb-8">
-        <h1 className="text-5xl font-bold text-primary font-serif">Game Over!</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold text-primary font-serif">Game Over!</h1>
         
         {madeTop10 && !isSubmitted && (
           <div className="flex items-center justify-center gap-2 text-2xl font-bold text-primary animate-fade-in">
