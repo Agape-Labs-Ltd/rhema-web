@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 interface Question {
   text: string;
@@ -19,10 +19,10 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
 
-  // Audio refs - use useRef to persist across renders
-  const correctSound = useRef(new Audio("/correct.mp3"));
-  const incorrectSound = useRef(new Audio("/incorrect.mp3"));
-  const timerTickSound = useRef(new Audio("/timer_tick.mp3"));
+  // Audio refs
+  const correctSound = new Audio("/correct.mp3");
+  const incorrectSound = new Audio("/incorrect.mp3");
+  const timerTickSound = new Audio("/timer_tick.mp3");
 
   useEffect(() => {
     setTimeRemaining(10);
@@ -38,7 +38,7 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
 
       // Play tick sound in final 3 seconds (including 0)
       if (currentTime <= 3 && currentTime >= 0) {
-        timerTickSound.current.play().catch(() => {});
+        timerTickSound.play().catch(() => {});
       }
 
       // Auto-advance when timer runs out
@@ -49,12 +49,12 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
         // Wait for bar to fully empty (1000ms transition) before showing feedback
         setTimeout(() => {
           // Stop tick sound exactly when "Incorrect!" appears
-          timerTickSound.current.pause();
-          timerTickSound.current.currentTime = 0;
+          timerTickSound.pause();
+          timerTickSound.currentTime = 0;
           
           setSelectedIndex(-1);
           setShowFeedback(true);
-          incorrectSound.current.play().catch(() => {});
+          incorrectSound.play().catch(() => {});
           
           setTimeout(() => {
             onAnswer(-1, 0);
@@ -66,8 +66,8 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
     return () => {
       clearInterval(timer);
       // Stop any playing tick sound when moving to next question
-      timerTickSound.current.pause();
-      timerTickSound.current.currentTime = 0;
+      timerTickSound.pause();
+      timerTickSound.currentTime = 0;
     };
   }, [question]);
 
@@ -79,9 +79,9 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
 
     const isCorrect = index === question.correct_index;
     if (isCorrect) {
-      correctSound.current.play().catch(() => {});
+      correctSound.play().catch(() => {});
     } else {
-      incorrectSound.current.play().catch(() => {});
+      incorrectSound.play().catch(() => {});
     }
 
     setTimeout(() => {

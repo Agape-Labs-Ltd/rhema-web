@@ -123,11 +123,11 @@ export const ScoreScreen = ({ score, leaderboard, onPlayAgain, onSaveScore }: Sc
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 pt-20 md:pt-4">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
       {/* Back Link */}
       <Link
         to="/"
-        className="absolute top-6 left-6 flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors z-10"
+        className="absolute top-6 left-6 flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
       >
         <ArrowLeft className="w-5 h-5" />
         <span className="text-sm">Back to Home</span>
