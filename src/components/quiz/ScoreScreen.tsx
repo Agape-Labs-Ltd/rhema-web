@@ -210,7 +210,7 @@ export const ScoreScreen = ({ score, leaderboard, onPlayAgain, onSaveScore }: Sc
 
         {/* Secondary CTAs */}
         <div className="space-y-3 pt-2">
-          <a href="https://testflight.apple.com/join/8rKnsebm" target="_blank" rel="noopener noreferrer" className="block">
+          <a href="https://apps.apple.com/gb/app/rhema-memorise-and-meditate/id6750488143" target="_blank" rel="noopener noreferrer" className="block">
             <Button size="lg" variant="outline" className="w-full h-12 text-base font-semibold">
               Download Full App
             </Button>

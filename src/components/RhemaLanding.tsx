@@ -147,19 +147,14 @@ const RhemaLanding = () => {
           />
         </ContainerScroll>
         
-        {/* Download Button & Quiz Link */}
-        <div className="flex flex-col items-center gap-4 mt-4 mb-32 relative z-10">
-          <a href="https://testflight.apple.com/join/8rKnsebm" target="_blank" rel="noopener noreferrer">
+        {/* Download Button */}
+        <div className="flex flex-col items-center mt-4 mb-16 relative z-10">
+          <a href="https://apps.apple.com/gb/app/rhema-memorise-and-meditate/id6750488143" target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full bg-black text-white hover:bg-black/90 border border-white/20">
             <img src="/apple_logo.svg" alt="Apple" className="w-5 h-5 invert" />
               <span className="font-medium">Download for iOS</span>
             </Button>
           </a>
-          <Link to="/quiz">
-            <Button size="lg" variant="outline" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full">
-              <span className="font-medium">Play Bible Quiz</span>
-            </Button>
-          </Link>
         </div>
       </section>
 
@@ -227,7 +222,7 @@ const RhemaLanding = () => {
           </p>
           
           <div className="flex justify-center">
-            <a href="https://testflight.apple.com/join/8rKnsebm" target="_blank" rel="noopener noreferrer">
+            <a href="https://apps.apple.com/gb/app/rhema-memorise-and-meditate/id6750488143" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full bg-black text-white hover:bg-black/90 border border-white/20">
                 <img src="/apple_logo.svg" alt="Apple" className="w-5 h-5 invert" />
                 <span className="font-medium">Download for iOS</span>
