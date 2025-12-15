@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Question {
   text: string;
@@ -19,10 +19,53 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
 
-  // Audio refs
-  const correctSound = new Audio("/correct.mp3");
-  const incorrectSound = new Audio("/incorrect.mp3");
-  const timerTickSound = new Audio("/timer_tick.mp3");
+  // Persistent audio elements (avoid re-creating per render and satisfy autoplay policies)
+  const correctSoundRef = useRef<HTMLAudioElement | null>(null);
+  const incorrectSoundRef = useRef<HTMLAudioElement | null>(null);
+  const timerTickSoundRef = useRef<HTMLAudioElement | null>(null);
+
+  // Initialize once
+  useEffect(() => {
+    if (!correctSoundRef.current) {
+      correctSoundRef.current = new Audio("/correct.mp3");
+      correctSoundRef.current.preload = "auto";
+    }
+    if (!incorrectSoundRef.current) {
+      incorrectSoundRef.current = new Audio("/incorrect.mp3");
+      incorrectSoundRef.current.preload = "auto";
+    }
+    if (!timerTickSoundRef.current) {
+      timerTickSoundRef.current = new Audio("/timer_tick.mp3");
+      timerTickSoundRef.current.preload = "auto";
+      timerTickSoundRef.current.volume = 0.35;
+    }
+
+    // Desktop browsers block audio until a user gesture. Unlock by performing a
+    // quick play/pause on first interaction, then remove the listener.
+    const unlock = () => {
+      const a = timerTickSoundRef.current;
+      if (!a) return;
+      const playPromise = a.play();
+      if (playPromise && typeof playPromise.then === "function") {
+        playPromise.then(() => {
+          a.pause();
+          a.currentTime = 0;
+          window.removeEventListener("pointerdown", unlock);
+          window.removeEventListener("keydown", unlock);
+        }).catch(() => {
+          // Ignore; will try again on next gesture
+        });
+      }
+    };
+
+    window.addEventListener("pointerdown", unlock, { once: true });
+    window.addEventListener("keydown", unlock, { once: true });
+
+    return () => {
+      window.removeEventListener("pointerdown", unlock);
+      window.removeEventListener("keydown", unlock);
+    };
+  }, []);
 
   useEffect(() => {
     setTimeRemaining(10);
@@ -38,7 +81,7 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
 
       // Play tick sound in final 3 seconds (including 0)
       if (currentTime <= 3 && currentTime >= 0) {
-        timerTickSound.play().catch(() => {});
+        timerTickSoundRef.current?.play().catch(() => {});
       }
 
       // Auto-advance when timer runs out
@@ -49,12 +92,14 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
         // Wait for bar to fully empty (1000ms transition) before showing feedback
         setTimeout(() => {
           // Stop tick sound exactly when "Incorrect!" appears
-          timerTickSound.pause();
-          timerTickSound.currentTime = 0;
+          if (timerTickSoundRef.current) {
+            timerTickSoundRef.current.pause();
+            timerTickSoundRef.current.currentTime = 0;
+          }
           
           setSelectedIndex(-1);
           setShowFeedback(true);
-          incorrectSound.play().catch(() => {});
+          incorrectSoundRef.current?.play().catch(() => {});
           
           setTimeout(() => {
             onAnswer(-1, 0);
@@ -66,8 +111,10 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
     return () => {
       clearInterval(timer);
       // Stop any playing tick sound when moving to next question
-      timerTickSound.pause();
-      timerTickSound.currentTime = 0;
+      if (timerTickSoundRef.current) {
+        timerTickSoundRef.current.pause();
+        timerTickSoundRef.current.currentTime = 0;
+      }
     };
   }, [question]);
 
@@ -79,9 +126,9 @@ export const GameScreen = ({ question, questionNumber, score, onAnswer }: GameSc
 
     const isCorrect = index === question.correct_index;
     if (isCorrect) {
-      correctSound.play().catch(() => {});
+      correctSoundRef.current?.play().catch(() => {});
     } else {
-      incorrectSound.play().catch(() => {});
+      incorrectSoundRef.current?.play().catch(() => {});
     }
 
     setTimeout(() => {

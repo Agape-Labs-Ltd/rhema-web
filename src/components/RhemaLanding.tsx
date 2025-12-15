@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card as UICard } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Heart, BookOpen, Target } from "lucide-react";
+import { Heart, BookOpen, Target, Instagram } from "lucide-react";
 import heroImage from "@/assets/rhema-hero.jpg";
 import appScreenshot from "@/assets/rhema-app-screenshot.png";
 import rhemaLogo from "@/assets/rhema_logo_light.svg";
@@ -243,13 +243,28 @@ const RhemaLanding = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} <a href="https://agapelabs.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-teal-accent transition-colors">Agape Labs Ltd</a>. All rights reserved.
+              © {new Date().getFullYear()}{" "}
+              <a
+                href="https://agapelabs.co.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-teal-accent transition-colors"
+              >
+                Agape Labs Ltd
+              </a>
+              . All rights reserved.
             </div>
-            <nav className="flex gap-6">
-              <Link to="/quiz" className="text-sm text-muted-foreground hover:text-teal-accent transition-colors">
+            <nav className="flex gap-6 items-center">
+              <Link
+                to="/quiz"
+                className="text-sm text-muted-foreground hover:text-teal-accent transition-colors"
+              >
                 Bible Quiz
               </Link>
-              <Link to="/privacy" className="text-sm text-muted-foreground hover:text-teal-accent transition-colors">
+              <Link
+                to="/privacy"
+                className="text-sm text-muted-foreground hover:text-teal-accent transition-colors"
+              >
                 Privacy Policy
               </Link>
               <a
@@ -257,6 +272,15 @@ const RhemaLanding = () => {
                 className="text-sm text-muted-foreground hover:text-teal-accent transition-colors"
               >
                 Contact
+              </a>
+              <a
+                href="https://www.instagram.com/rhema_app_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Rhema on Instagram"
+                className="text-muted-foreground hover:text-teal-accent transition-colors"
+              >
+                <Instagram className="w-5 h-5" />
               </a>
             </nav>
           </div>
