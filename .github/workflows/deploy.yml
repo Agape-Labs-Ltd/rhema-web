@@ -39,6 +39,14 @@ jobs:
         run: |
           if [ -f dist/index.html ]; then cp dist/index.html dist/404.html; fi
 
+      - name: Create privacy.html for Google Play
+        run: |
+          if [ -f dist/index.html ]; then cp dist/index.html dist/privacy.html; fi
+
+      - name: Create terms.html for Google Play
+        run: |
+          if [ -f dist/index.html ]; then cp dist/index.html dist/terms.html; fi
+
       - name: Disable Jekyll processing
         run: |
           touch dist/.nojekyll
