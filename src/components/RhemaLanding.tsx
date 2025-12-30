@@ -148,11 +148,17 @@ const RhemaLanding = () => {
         </ContainerScroll>
         
         {/* Download Button */}
-        <div className="flex flex-col items-center mt-4 mb-16 relative z-10">
+        <div className="flex flex-col items-center gap-4 mt-4 mb-16 relative z-10">
           <a href="https://apps.apple.com/gb/app/rhema-memorise-and-meditate/id6750488143" target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full bg-black text-white hover:bg-black/90 border border-white/20">
             <img src="/apple_logo.svg" alt="Apple" className="w-5 h-5 invert" />
               <span className="font-medium">Download for iOS</span>
+            </Button>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.agape.rhema&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full bg-gray-200 text-black hover:bg-gray-300 border border-gray-300">
+              <img src="/google_play_icon.svg.png" alt="Google Play" className="w-5 h-5" />
+              <span className="font-medium">Download for Android</span>
             </Button>
           </a>
         </div>
@@ -221,11 +227,17 @@ const RhemaLanding = () => {
             through meaningful Scripture memorization and meditation.
           </p>
           
-          <div className="flex justify-center">
+          <div className="flex flex-col items-center gap-4">
             <a href="https://apps.apple.com/gb/app/rhema-memorise-and-meditate/id6750488143" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full bg-black text-white hover:bg-black/90 border border-white/20">
                 <img src="/apple_logo.svg" alt="Apple" className="w-5 h-5 invert" />
                 <span className="font-medium">Download for iOS</span>
+              </Button>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.agape.rhema&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="flex items-center gap-3 text-lg px-8 py-6 rounded-full bg-gray-200 text-black hover:bg-gray-300 border border-gray-300">
+                <img src="/google_play_icon.svg.png" alt="Google Play" className="w-5 h-5" />
+                <span className="font-medium">Download for Android</span>
               </Button>
             </a>
           </div>
