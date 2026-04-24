@@ -45,6 +45,11 @@ All colors MUST be HSL.
     --teal-dark: 187 37% 28%;
     --sacred-text: 215 25% 27%;
 
+    /* Aurora accents — soft blues used in the animated background layer */
+    --aurora-sky: 200 80% 78%;
+    --aurora-indigo: 225 65% 80%;
+    --aurora-mint: 170 50% 82%;
+
     /* Gradients */
     --gradient-divine: linear-gradient(135deg, hsl(var(--teal-light)), hsl(var(--brand-surface)));
     --gradient-spiritual: linear-gradient(45deg, hsl(var(--brand-primary)), hsl(var(--teal-accent)));
@@ -124,5 +129,16 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

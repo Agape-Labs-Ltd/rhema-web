@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import AuroraBackground from "@/components/AuroraBackground";
 import Index from "./pages/Index";
 import Quiz from "./pages/Quiz";
 import Privacy from "./pages/Privacy";
@@ -27,6 +28,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <AuroraBackground />
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
