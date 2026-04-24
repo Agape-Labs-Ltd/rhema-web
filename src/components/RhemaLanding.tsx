@@ -17,54 +17,48 @@ const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.agape.rhema&pcampaignid=web_share";
 
 const StoreButtons = ({ size = "lg" }: { size?: "default" | "lg" }) => (
-  <div className="flex flex-col items-center gap-3 sm:flex-row sm:items-stretch sm:justify-start sm:gap-4">
-    <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+  <div className="flex w-full max-w-[350px] flex-row items-stretch gap-3 px-2 sm:w-auto sm:max-w-none sm:gap-4 sm:px-0">
+    <a
+      href={APP_STORE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex-1 sm:flex-none"
+    >
       <Button
         size={size}
-        className="flex w-full items-center gap-3 rounded-full border border-white/20 bg-black px-8 py-6 text-lg text-white transition-transform hover:-translate-y-0.5 hover:bg-black/90 sm:w-auto"
+        className="flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-black px-4 py-4 text-sm text-white transition-transform hover:-translate-y-0.5 hover:bg-black/90 sm:gap-3 sm:px-8 sm:py-6 sm:text-lg sm:w-[240px]"
       >
-        <img src="/apple_logo.svg" alt="" className="h-5 w-auto invert" />
-        <span className="font-medium">Download for iOS</span>
+        <img src="/apple_logo.svg" alt="" className="h-4 w-auto invert sm:h-5" />
+        <span className="font-medium">
+          <span className="hidden sm:inline"> </span>App Store
+        </span>
       </Button>
     </a>
-    <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+    <a
+      href={PLAY_STORE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex-1 sm:flex-none"
+    >
       <Button
         size={size}
-        className="flex w-full items-center gap-3 rounded-full border border-gray-300 bg-white px-8 py-6 text-lg text-black transition-transform hover:-translate-y-0.5 hover:bg-gray-100 sm:w-auto"
+        className="flex w-full items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-4 text-sm text-black transition-transform hover:-translate-y-0.5 hover:bg-gray-100 sm:gap-3 sm:px-8 sm:py-6 sm:text-lg sm:w-[240px]"
       >
-        <img src="/google_play_icon.svg.png" alt="" className="h-5 w-auto" />
-        <span className="font-medium">Download for Android</span>
+        <img src="/google_play_icon.svg.png" alt="" className="h-4 w-auto sm:h-5" />
+        <span className="font-medium">
+          <span className="hidden sm:inline"></span>Google Play
+        </span>
       </Button>
     </a>
   </div>
 );
 
 const TopNav = () => (
-  <header className="sticky top-0 z-40 w-full backdrop-blur-md">
+  <header className="sticky top-0 z-40 w-full bg-white">
     <div className="container mx-auto flex items-center justify-between px-4 py-4 md:px-8">
       <Link to="/" aria-label="Rhema home">
         <img src={rhemaLogo} alt="Rhema" className="h-8 w-auto" />
       </Link>
-      <nav className="flex items-center gap-2 sm:gap-3">
-        <a
-          href={APP_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Download on the App Store"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black text-white shadow-peaceful transition-transform hover:-translate-y-0.5"
-        >
-          <img src="/apple_logo.svg" alt="" className="h-4 w-auto invert" />
-        </a>
-        <a
-          href={PLAY_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Get it on Google Play"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-black shadow-peaceful transition-transform hover:-translate-y-0.5"
-        >
-          <img src="/google_play_icon.svg.png" alt="" className="h-4 w-auto" />
-        </a>
-      </nav>
     </div>
   </header>
 );
@@ -83,36 +77,38 @@ const Hero = () => {
       ref={heroRef}
       className="relative flex min-h-[calc(100vh-4.5rem)] items-center overflow-hidden pb-16 pt-8 md:pb-24 md:pt-12"
     >
-      <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 md:grid-cols-2 md:gap-16 md:px-8">
+      {/* Mask the aurora across the top half of the hero so the gradient
+          reveals itself about halfway down the section. Mask height extends
+          further and the white-to-transparent fade runs over a longer
+          distance to avoid a clipped edge at the bottom. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[85%] bg-gradient-to-b from-white from-0% via-white via-30% to-transparent to-100%"
+      />
+      <div className="container relative z-10 mx-auto flex flex-col gap-8 px-4 md:grid md:grid-cols-2 md:items-center md:gap-x-16 md:gap-y-8 md:px-8">
         <motion.div
           style={{ y: copyY }}
-          className="relative z-10 text-center md:text-left"
+          className="order-1 text-center md:col-start-1 md:row-start-1 md:text-left"
         >
-          <h1 className="font-serif text-5xl font-semibold leading-[1.1] text-teal-dark sm:text-6xl md:text-7xl">
+          <h1 className="font-serif text-4xl font-semibold leading-[1.1] text-teal-dark sm:text-5xl md:text-7xl">
             Hide God's Word
             <span className="mt-2 block bg-gradient-spiritual bg-clip-text pb-2 font-bold tracking-tight text-transparent">
               in your heart.
             </span>
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground md:mx-0 md:text-xl">
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground md:hidden">
+            Beautifully simple Bible memory &amp; meditation
+          </p>
+          <p className="mx-auto mt-6 hidden max-w-xl text-base leading-relaxed text-muted-foreground md:mx-0 md:block md:text-xl">
             Rhema is the beautifully calm way to memorise and meditate on
             Scripture — spaced repetition, guided reflection, and gentle
             streaks that grow with you.
           </p>
-
-          <div className="mt-10 flex justify-center md:justify-start">
-            <StoreButtons />
-          </div>
-
-          <div className="mt-8 flex items-center justify-center gap-2 text-sm text-muted-foreground md:justify-start">
-            <span className="inline-flex h-2 w-2 animate-teal-glow rounded-full bg-teal-accent" />
-            <span>Available on iOS and Android — built by Agape Labs.</span>
-          </div>
         </motion.div>
 
         <motion.div
           style={{ y: phoneY }}
-          className="relative mx-auto w-full max-w-[400px] md:max-w-[500px]"
+          className="order-2 relative mx-auto w-full max-w-[320px] sm:max-w-[380px] md:col-start-2 md:row-span-2 md:row-start-1 md:max-w-[500px]"
         >
           <PhoneMockup
             src={heroPhone}
@@ -120,6 +116,19 @@ const Hero = () => {
             framed={false}
             float
           />
+        </motion.div>
+
+        <motion.div
+          style={{ y: copyY }}
+          className="order-3 text-center md:col-start-1 md:row-start-2 md:text-left"
+        >
+          <div className="flex justify-center md:justify-start">
+            <StoreButtons />
+          </div>
+          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted-foreground md:justify-start md:text-sm">
+            <span className="inline-flex h-2 w-2 animate-teal-glow rounded-full bg-teal-accent" />
+            <span>Available on iOS and Android — built by Agape Labs.</span>
+          </div>
         </motion.div>
       </div>
     </section>
@@ -261,7 +270,7 @@ const REVIEWS: Review[] = [
 ];
 
 const ReviewCard = ({ review }: { review: Review }) => (
-  <article className="flex min-h-[320px] w-[360px] shrink-0 flex-col rounded-3xl border border-border/60 bg-white/80 p-7 shadow-peaceful backdrop-blur-sm sm:min-h-[340px] sm:w-[420px]">
+  <article className="flex min-h-[220px] w-[300px] shrink-0 flex-col rounded-3xl border border-border/60 bg-white/80 p-5 shadow-peaceful backdrop-blur-sm sm:min-h-[340px] sm:w-[420px] sm:p-7">
     <div className="mb-4 flex items-center gap-3">
       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-200 text-neutral-400">
         <User className="h-5 w-5" />
