@@ -62,7 +62,7 @@ const Privacy = () => {
               <li>Meditation sessions you configure</li>
               <li>Progress data related to your Scripture memorization</li>
               <li>Practice session history and statistics</li>
-              <li><strong>Meditation prompts</strong> - The text you type when you ask the app to create a meditation, and the AI's response to it</li>
+              <li><strong>Meditation prompts</strong> - The text you type when you ask the app to create a meditation, a short summary of the AI's result (the meditation theme and how many verses it chose), and, if the request fails, the error message, including whether the AI's safety filters blocked your prompt</li>
             </ul>
 
             <h3 className="text-xl font-semibold text-foreground mb-3">2.4 Usage and Technical Information</h3>
@@ -125,7 +125,7 @@ const Privacy = () => {
             <h2 className="text-2xl font-semibold text-teal-text mb-4">6. Data Sharing and Third Parties</h2>
             <p className="text-foreground leading-relaxed mb-2">We may share your data with:</p>
             <ul className="list-disc list-inside space-y-2 mb-4 text-foreground">
-              <li><strong>Service Providers</strong> - Supabase (database and authentication), Google (OAuth), Apple (Sign-In), Google Gemini (AI model that generates meditations from your prompts), PostHog (product analytics, including storing meditation prompts and AI responses and using automated AI tools to summarise and group them)</li>
+              <li><strong>Service Providers</strong> - Supabase (database and authentication), Google (OAuth), Apple (Sign-In), Google Gemini (AI model that generates meditations from your prompts), PostHog (product analytics, including storing meditation prompts, summaries of AI results and error messages, and using automated AI tools to summarise and group them)</li>
               <li><strong>Legal Requirements</strong> - When required by law, court order, or governmental authority</li>
               <li><strong>Business Transfers</strong> - In connection with a merger, acquisition, or sale of assets (with notice to you)</li>
             </ul>
