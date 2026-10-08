@@ -8,7 +8,7 @@ const Privacy = () => {
         <div className="prose prose-slate max-w-none">
           <h1 className="text-4xl font-bold text-teal-text mb-2 font-serif">Privacy Policy</h1>
           <p className="text-sm text-muted-foreground mb-8">
-            Last Updated: {new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+            Last Updated: 8 October 2026
           </p>
 
           <section className="mb-8">
@@ -62,6 +62,7 @@ const Privacy = () => {
               <li>Meditation sessions you configure</li>
               <li>Progress data related to your Scripture memorization</li>
               <li>Practice session history and statistics</li>
+              <li><strong>Meditation prompts</strong> - The text you type when you ask the app to create a meditation, and the AI's response to it</li>
             </ul>
 
             <h3 className="text-xl font-semibold text-foreground mb-3">2.4 Usage and Technical Information</h3>
@@ -82,7 +83,7 @@ const Privacy = () => {
               <li><strong>Authentication</strong> - To create and manage your account securely</li>
               <li><strong>Personalization</strong> - To customize your experience and track your progress</li>
               <li><strong>Communication</strong> - To send important service updates, security alerts, and support messages</li>
-              <li><strong>Analytics</strong> - To understand how users interact with our app and improve features</li>
+              <li><strong>Analytics</strong> - To understand how users interact with our app and improve features, including reviewing the text of meditation prompts to understand what users ask for</li>
               <li><strong>Security</strong> - To detect, prevent, and address technical issues, fraud, and abuse</li>
               <li><strong>Legal Compliance</strong> - To comply with applicable laws and regulations</li>
               <li><strong>Future Subscription Management</strong> - To manage billing and subscriptions when we transition from beta to paid model</li>
@@ -98,6 +99,9 @@ const Privacy = () => {
               <li><strong>Consent</strong> - Where required, we obtain your explicit consent (e.g., for marketing communications)</li>
               <li><strong>Legal Obligation</strong> - To comply with legal requirements</li>
             </ul>
+            <p className="text-foreground leading-relaxed">
+              <strong>Sensitive information in meditation prompts.</strong> What you type in a meditation prompt may reveal information about your religious beliefs or your health. We use this text only to generate your meditation and for the analytics described in Section 3. Please do not include names or other details that identify you or other people. You can ask us to delete your prompts at any time by contacting us (see Section 14).
+            </p>
           </section>
 
           <section className="mb-8">
@@ -121,7 +125,7 @@ const Privacy = () => {
             <h2 className="text-2xl font-semibold text-teal-text mb-4">6. Data Sharing and Third Parties</h2>
             <p className="text-foreground leading-relaxed mb-2">We may share your data with:</p>
             <ul className="list-disc list-inside space-y-2 mb-4 text-foreground">
-              <li><strong>Service Providers</strong> - Supabase (database and authentication), Google (OAuth), Apple (Sign-In)</li>
+              <li><strong>Service Providers</strong> - Supabase (database and authentication), Google (OAuth), Apple (Sign-In), Google Gemini (AI model that generates meditations from your prompts), PostHog (product analytics, including storing meditation prompts and AI responses and using automated AI tools to summarise and group them)</li>
               <li><strong>Legal Requirements</strong> - When required by law, court order, or governmental authority</li>
               <li><strong>Business Transfers</strong> - In connection with a merger, acquisition, or sale of assets (with notice to you)</li>
             </ul>
